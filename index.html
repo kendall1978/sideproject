@@ -18,13 +18,17 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 
     <title>Video Game Database</title>
 </head>
 
 <body>
     <div id="app">
+        <nav-comp></nav-comp>
+        <header-comp></header-comp>
         <games-list v-bind:thegames="games"></games-list>
+        <footer-comp></footer-comp>
     </div>
 
 

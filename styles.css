@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Courier+Prime&display=swap');
+
+body{
+    background-color: #595457;
+    font-family: 'Courier Prime', monospace;
+}
+
+#allCards{
+    margin-top: 2.5%;
+    margin-left: 7%;
+    width: 88%;
+    
+}
+
+.col-lg{
+    padding: 10px 13px 10px 13px;
+    margin-top: 2.5%;
+}
+
+.card:hover{
+    -webkit-box-shadow: -1px 10px 43px -12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 10px 43px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 10px 43px -12px rgba(0, 0, 0, 0.75); 
+    transform: scale(1.3);
+    z-index: 1;
+    background-color: #634133;
+    
+    
+}
+
+.card{
+    background-color: #14281d;
+    color: #f1f5f2;
+}
+
+.jumbotron{
+    background-color: #14281d;
+    color: #f1f5f2;
+    margin-top: 2%;
+}
+
+.py-4{
+    background-color: #14281d;
+}
+
+/* Nav Styles */
+
+
+.navbar-nav{
+    margin-left: 78%;
+}
+
+.navbar-brand{
+    
+}
