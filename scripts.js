@@ -2,8 +2,11 @@
 Kendall Roberts
 Video Game Database
 */
+// Initializing my Variables
 
 var myGames = [];
+var theBlogs = [];
+// The recommended way to call this API
 
 var settings = {
     "async": true,
@@ -15,6 +18,8 @@ var settings = {
         "x-rapidapi-key": "d7727d5987msh950787fe21acfc7p1ed9d9jsn957ca8def9ae"
     }
 }
+// Filling my array of objects from my API
+
 $(document).ready(() => {
     $.ajax(settings).done(function (response) {
         console.log(response.results)
@@ -25,14 +30,35 @@ $(document).ready(() => {
             response.results[15], response.results[16], response.results[17], response.results[18],
             response.results[19], )
         console.log(myGames)
-        theGenres.push(response.results[0].genres[0].name)
-        console.log(theGenres)
     });
 })
 
+//Filling my blogs array
+$(document).ready(() => {
+    theBlogs.push({
+        title: "All me, what do you want to know?",
+        content: "Hello, Im Kendall Roberts. I am an " 
+       + "aspiring software engineer/web deveoper. "
+       + "Currently enrolled at Ozarks Technical Community "
+       + "College hunting down that associate degree in Computer "
+       + "Information Science. Afterwards I hope to land a good job,"
+       +" possibly with you. I fell in love with code and tech long ago "
+       + "working on a project far far away. Which leads me to my next "
+       + "confession. I just so happen to be a mega nerd, but who isnt in this field right? "
+       + "I love Marvel, retro video games, new video games, new tech and those juicy "
+       + "gaming PC builds. Anyways take a look around im constantly learning "
+       + "I just wanted to show off some of my skills with this website. Thanks!",
+       date: "1/1/2020",
+       backdrop_img: "keyboard.jpg"
+    })
+    console.log(theBlogs);
+})
+
+// Vue components
+
 Vue.component('footer-comp', {
     template:`
-    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <footer id="sticky-footer" class="py-4 text-white-50">
         <div class="container text-center">
             <small>Copyright &copy; Kendall Roberts</small>
         </div>
@@ -42,7 +68,7 @@ Vue.component('footer-comp', {
 
 Vue.component('nav-comp', {
     template: `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <a class="navbar-brand" href="index.html">KSide</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -70,6 +96,23 @@ Vue.component('header-comp', {
     `
 })
 
+Vue.component('blog-comp', {
+    props: ['myblogs'],
+    template: `
+    <div class="container-fluid">
+        <div class="row" v-for="blog in myblogs">
+            <div class="entry" v-bind:style="{backgroundImage: 'url(\"+blog.backdrop_img+\")'}">
+                <div class="col-lg-5">
+                    <h1 class="font-weight-light">{{blog.title}}</h1>
+                    <h4>{{blog.date}}</h4>
+                    <p>{{blog.content}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+})
+
 Vue.component('games-list', {
     props: ['thegames'],
     template: `
@@ -92,10 +135,13 @@ Vue.component('games-list', {
 })
 
 
+
+
 var app = new Vue({
     el: '#app',
     data: {
-        games: myGames
+        games: myGames,
+        blogs: theBlogs
 
     }
 })
